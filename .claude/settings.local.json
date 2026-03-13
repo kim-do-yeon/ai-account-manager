@@ -10,7 +10,20 @@
       "Bash(gh:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(vercel whoami:*)",
+      "Bash(openssl rand:*)",
+      "Bash(vercel link:*)",
+      "Bash(vercel integration list:*)",
+      "Bash(vercel integration add:*)",
+      "Bash(vercel stores ls:*)",
+      "Bash(vercel help:*)",
+      "Bash(vercel ir ls:*)",
+      "Bash(vercel open:*)",
+      "Bash(vercel env pull:*)",
+      "Bash(vercel env ls:*)",
+      "Bash(vercel env add:*)",
+      "Bash(vercel env rm:*)"
     ]
   }
 }
