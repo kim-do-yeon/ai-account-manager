@@ -31,6 +31,11 @@ export async function PUT(request: Request) {
       await redis.set('settings:site_password', hashed);
     }
 
+    if (body.adminPassword) {
+      const hashed = hashPassword(body.adminPassword);
+      await redis.set('settings:admin_password', hashed);
+    }
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('PUT /api/settings error:', error);

@@ -10,9 +10,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Password required' }, { status: 400 });
     }
 
-    const storedHash = await redis.get<string>('settings:admin_password');
+    let storedHash = await redis.get<string>('settings:admin_password');
+
+    // Redis에 관리자 비밀번호가 없으면 환경변수 기본값 사용
     if (!storedHash) {
-      return NextResponse.json({ error: 'Not configured' }, { status: 500 });
+      const defaultPassword = process.env.ADMIN_PASSWORD;
+      if (!defaultPassword) {
+        return NextResponse.json({ error: 'Admin password not configured' }, { status: 500 });
+      }
+      storedHash = hashPassword(defaultPassword);
     }
 
     const inputHash = hashPassword(password);
